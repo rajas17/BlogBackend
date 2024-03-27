@@ -53,7 +53,7 @@ namespace BlogBackend.Controllers
 
             _context.Admins.Add(AddAdmin);
             _context.SaveChanges();
-            return Ok("Admin added successfully");
+            return Ok( new { message = "Admin added successfully" });
         }
 
         [HttpPost("login")]

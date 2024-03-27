@@ -50,6 +50,15 @@ namespace BlogBackend.Controllers
             return StatusCode((int)HttpStatusCode.OK, new { message = "Added" });
         }
 
+        [HttpGet("getCategoryById/{id}")]
+        public async Task<ActionResult<Category>> GetById(int id) 
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if(category != null)
+                return Ok(category);
+            return NotFound();
+        }
+
 
         [HttpDelete("deleteCategory/{id}")]
         public async Task<ActionResult> DeleteCategory(int id)
